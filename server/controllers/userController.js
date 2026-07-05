@@ -146,7 +146,7 @@ export const loginUser = async(req, res, next)=>{
         httpOnly: true,
         signed: true,
         maxAge: sessionExpiryTime, // after this  time end user will be logot automatically and this can be customize diectly from ui and can be hacked easily
-        sameSite: "lax",   // for preventing csrff attack 
+        sameSite: "none",   // for preventing csrff attack 
         secure: false
     })
     res.json({ message: "logged in" });
