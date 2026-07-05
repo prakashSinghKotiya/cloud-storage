@@ -1,6 +1,7 @@
 import Razorpay from "razorpay"
 import Subscription from "../models/rzpsubscriptionModel.js";
 import User from "../models/userModel.js";
+import { paymentActivated, paymentCancelledd } from "./webhookEventController.js";
 
 export const PLANS = {
   plan_SnOQBLIj5Szjoa: {
@@ -23,6 +24,13 @@ export const PLANS = {
   },
 };
 
+ const handlers = {
+        "subscription.activated": paymentActivated,
+        "subscription.cancelled": paymentCancelledd,
+        // "payment.captured": handlePaymentCaptured,
+        // "payment.failed": handlePaymentFailed,
+    };
+
 
 export const rzpWebhook = async (req,res,next) => {
  
@@ -34,18 +42,37 @@ const isSignatureValid = Razorpay.validateWebhookSignature(  JSON.stringify(req.
 
 if(isSignatureValid){
     console.log("signature verified rzp  ");  
-   
-    if(req.body.event === "subscription.activated"){  // there are multiple rzp event we are processing this one this will trigger if succesfulll payment happened 
-        const rzpSubscription = req.body.payload.subscription.entity;
-        const planid = rzpSubscription.plan_id
-        const subscription = await Subscription.findOne({razorpaySubscriptionId: rzpSubscription.id})
-        subscription.status = rzpSubscription.status 
-        await subscription.save()
-        const increaseStorage = PLANS[planid].storageQuotaBytes // pickingg the storage from above plan array by matching plain id 
 
-        const user = await User.findByIdAndUpdate(subscription.userId, { $inc: { maxStorage: increaseStorage, plans:"pro" } },{new : true}) //increasing storage
-        console.log("storage increased !!!");
+   
+
+    const events = handlers[req.body.event];
+    if (events) {
+      console.log("event found",events);
+        await events(req.body);
     }
+
+   
+    // if(req.body.event === "subscription.activated"){  // there are multiple rzp event we are processing this one this will trigger if succesfulll payment happened 
+    //     const rzpSubscription = req.body.payload.subscription.entity;
+    //     const planid = rzpSubscription.plan_id
+    //     const subscription = await Subscription.findOne({razorpaySubscriptionId: rzpSubscription.id})
+    //     subscription.status = rzpSubscription.status 
+    //     await subscription.save()
+    //     const increaseStorage = PLANS[planid].storageQuotaBytes // pickingg the storage from above plan array by matching plain id 
+
+    //     const user = await User.findByIdAndUpdate(subscription.userId, { $inc: { maxStorage: increaseStorage, plans:"pro" } },{new : true}) //increasing storage
+    //     console.log("storage increased !!!");
+    // }
+
+    //   if(req.body.event === "subscription.cancelled"){  // there are multiple rzp event we are processing this one this will trigger if succesfulll payment happened 
+    //     const rzpSubscription = req.body.payload.subscription.entity;
+    //     const planid = rzpSubscription.plan_id
+    //     const subscription = await Subscription.findOne({razorpaySubscriptionId: rzpSubscription.id})
+    //     subscription.status = rzpSubscription.status 
+    //     await subscription.save()
+       
+    //     console.log("payment cancelled !!!");
+    // }
 
 
  

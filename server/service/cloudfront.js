@@ -1,6 +1,9 @@
 import { getSignedUrl } from "@aws-sdk/cloudfront-signer"
 
 
+
+
+
 const distribution = process.env.CLOUDFRONT_DISTRIBUTION; // this will also get from cloudfront 
 const privateKey = process.env.CLOUDFRONT_PRIVATE_KEY // will create this using open ssl
 const keyPairId = process.env.CLOUDFRONT_KEY_PAIR; // we will get this from cloudfront keypair id 
