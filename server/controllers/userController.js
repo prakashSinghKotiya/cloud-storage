@@ -160,10 +160,10 @@ export const loginUser = async(req, res, next)=>{
     
 
 export const userDetails = async(req, res)=>{ 
-    console.log(req.user);
+    console.log("req",req.user);
     const user = await User.findById(req.user._id)
     
-    console.log(user);
+    console.log("after",user);
     const dir = await Directory.findById(user.rootDirId)  
    
     
