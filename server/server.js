@@ -27,7 +27,7 @@ app.use(cookieParser(secretkey)) // this will be the secret key of our signed co
 app.use(express.json()) // sending body data, It parses the incoming JSON string from the HTTP request body into a JavaScript object. 
 
 app.use(cors({
-  origin: "https://cloudisk-drive.netlify.app/", // Enabling CORS
+  origin: "https://cloudisk-drive.netlify.app", // Enabling CORS
   credentials: true,
 }))  
                    
