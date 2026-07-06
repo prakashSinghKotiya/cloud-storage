@@ -1,0 +1,18 @@
+<svg width="100%" viewBox="0 0 420 280" xmlns="http://www.w3.org/2000/svg" role="img" style="">
+<title style="fill:rgb(0, 0, 0);stroke:none;color:rgb(11, 11, 11);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">Cloudrive cloud mark</title>
+<desc style="fill:rgb(0, 0, 0);stroke:none;color:rgb(11, 11, 11);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">A single cloud glyph filled with an indigo to violet to cyan gradient, outlined with a bright iridescent gradient border, and a glossy white highlight along its top edge.</desc>
+<defs>
+<linearGradient id="cloudFill" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#4F46E5"/>
+<stop offset="0.55" stop-color="#8B5CF6"/>
+<stop offset="1" stop-color="#22D3EE"/>
+</linearGradient>
+<linearGradient id="shineStroke" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" stop-color="#A5F3FC"/>
+<stop offset="0.5" stop-color="#F5F3FF"/>
+<stop offset="1" stop-color="#C4B5FD"/>
+</linearGradient>
+</defs>
+<path d="M140,240 C100,240 75,215 75,185 C75,160 95,140 120,138 C124,105 155,80 195,80 C238,80 270,105 278,140 C315,142 345,168 345,200 C345,228 320,240 285,240 Z" fill="url(#cloudFill)" stroke="url(#shineStroke)" stroke-width="5" stroke-linejoin="round" style="color:rgb(11, 11, 11);stroke-width:5px;stroke-linecap:butt;stroke-linejoin:round;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+<path d="M120,138 C124,105 155,80 195,80 C238,80 270,105 278,140" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" opacity="0.55" style="fill:none;stroke:rgb(255, 255, 255);color:rgb(11, 11, 11);stroke-width:3px;stroke-linecap:round;stroke-linejoin:miter;opacity:0.55;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+</svg>
