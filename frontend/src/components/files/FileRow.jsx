@@ -80,22 +80,22 @@ export default function FileRow({
     onOpenFile?.(file);
   }}
       className={`
+        
 group
 grid
 cursor-pointer
-grid-cols-[60px_1.8fr_170px_120px_170px_60px]
+grid-cols-[36px_minmax(0,1fr)_55px_28px]
+sm:grid-cols-[60px_1.8fr_170px_120px_170px_60px]
 items-center
 border-b
 border-white/5
-px-6
-py-4
+px-3
+sm:px-6
+py-3
+sm:py-4
 transition-all
 duration-200
-${
-  file.starred
-    ? "bg-yellow-400/[0.03]"
-    : ""
-}
+${file.starred ? "bg-yellow-400/[0.03]" : ""}
 hover:bg-white/[0.04]
 `}
     >
@@ -151,7 +151,7 @@ hover:bg-white/[0.04]
 
         <div className="min-w-0">
 
-          <h3 className="truncate text-[15px] font-medium text-white">
+          <h3 className="truncate text-sm sm:text-[15px] font-medium text-white">
             {file.name}
           </h3>
 
@@ -165,29 +165,23 @@ hover:bg-white/[0.04]
 
       {/* Owner */}
 
-      <div className="flex items-center gap-3">
+     {/* Owner */}
+<div className="hidden sm:flex items-center gap-3">
+  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-600 text-xs font-semibold">
+    Y
+  </div>
+  <span className="text-sm text-zinc-300">You</span>
+</div>
 
-        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-600 text-xs font-semibold">
-          Y
-        </div>
+{/* Size */}
+<span className="text-sm text-zinc-400">
+  {formatBytes(file.size)}
+</span>
 
-        <span className="text-sm text-zinc-300">
-          You
-        </span>
-
-      </div>
-
-      {/* Size */}
-
-      <span className="text-sm text-zinc-400">
-        {formatBytes(file.size)}
-      </span>
-
-      {/* Modified */}
-
-      <span className="text-sm text-zinc-400">
-        {formatDate(file.updatedAt)}
-      </span>
+{/* Modified */}
+<span className="hidden sm:block text-sm text-zinc-400">
+  {formatDate(file.updatedAt)}
+</span>
 
       {/* Actions */}
 

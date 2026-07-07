@@ -15,6 +15,7 @@ import {
 
 import { formatBytes } from "../../lib/formatBytes";
 import { useContextMenu } from "../../context/ContextMenuContext";
+import { useState } from "react";
 
 function getFileIcon(ext = "") {
   
@@ -54,6 +55,7 @@ export default function FileCard({
   onRemoveStar
 }) {
   const { openMenu } = useContextMenu();
+  const [starring, setStarring] = useState(false)
   console.log("starred",file);
 
   //const openFile = () => {window.location.href = `http://localhost:4000/file/${file._id}`;};

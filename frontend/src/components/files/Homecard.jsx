@@ -11,13 +11,13 @@ import FileTable from "./FileTable";
 
 const GRID_SIZE = {
   small:
-    "grid-cols-2 md:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-7",
+    "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6",
 
   medium:
-    "grid-cols-2 md:grid-cols-3 xl:grid-cols-5 2xl:grid-cols-6",
+    "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5",
 
   large:
-    "grid-cols-1 md:grid-cols-2 xl:grid-cols-4 2xl:grid-cols-5",
+    "grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4",
 };
 
 export default function ExplorerGrid({
@@ -55,77 +55,41 @@ onRemoveStar,
 
       <section>
 
-        <div className="mb-5 flex items-center justify-between">
+<div className="mb-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
 
-          <div className="flex items-center gap-3">
+  <div className="flex flex-wrap items-center gap-2
+justify-end
+w-full
+sm:w-auto">
+    <h2 className="text-xl sm:text-3xl font-semibold text-white">
+      Folders
+    </h2>
+    <span className="rounded-full bg-white/5 border border-white/10 px-3 py-1 text-xs text-zinc-300">
+      {folders.length}
+    </span>
+  </div>
 
-            <h2 className="text-3xl font-semibold text-white">
-              Folders
-            </h2>
+  <div className="flex items-center gap-2 sm:gap-3">
+    <select
+      value={folderSize}
+      onChange={(e) => setFolderSize(e.target.value)}
+      className="rounded-xl border border-white/10 bg-[#141821] px-2 sm:px-4 py-2 text-xs sm:text-sm text-zinc-300 outline-none"
+    >
+      <option value="small">Small</option>
+      <option value="medium">Medium</option>
+      <option value="large">Large</option>
+    </select>
 
-            <span className="rounded-full bg-white/5 border border-white/10 px-3 py-1 text-xs text-zinc-300">
-              {folders.length}
-            </span>
+    <button onClick={() => setFolderView("grid")} className={`rounded-xl p-2 ${folderView === "grid" ? "bg-blue-600 text-white" : "bg-[#141821] text-zinc-500"}`}>
+      <Grid2X2 size={18} />
+    </button>
 
-          </div>
+    <button onClick={() => setFolderView("list")} className={`rounded-xl p-2 ${folderView === "list" ? "bg-blue-600 text-white" : "bg-[#141821] text-zinc-500"}`}>
+      <List size={18} />
+    </button>
+  </div>
 
-          <div className="flex items-center gap-3">
-
-            {/* Size */}
-
-            <select
-              value={folderSize}
-              onChange={(e) =>
-                setFolderSize(e.target.value)
-              }
-              className="rounded-xl border border-white/10 bg-[#141821] px-4 py-2 text-sm text-zinc-300 outline-none"
-            >
-              <option value="small">
-                Small
-              </option>
-
-              <option value="medium">
-                Medium
-              </option>
-
-              <option value="large">
-                Large
-              </option>
-            </select>
-
-            {/* Grid */}
-
-            <button
-              onClick={() =>
-                setFolderView("grid")
-              }
-              className={`rounded-xl p-2 ${
-                folderView === "grid"
-                  ? "bg-blue-600 text-white"
-                  : "bg-[#141821] text-zinc-500"
-              }`}
-            >
-              <Grid2X2 size={18} />
-            </button>
-
-            {/* List */}
-
-            <button
-              onClick={() =>
-                setFolderView("list")
-              }
-              className={`rounded-xl p-2 ${
-                folderView === "list"
-                  ? "bg-blue-600 text-white"
-                  : "bg-[#141821] text-zinc-500"
-              }`}
-            >
-              <List size={18} />
-            </button>
-
-          </div>
-
-        </div>
+</div>
 
         {/* GRID */}
 
@@ -138,6 +102,7 @@ onRemoveStar,
               <FolderCard
                 key={folder._id}
                 folder={folder}
+                size={folderSize} 
                 onOpen={onOpen}
               />
             ))}
@@ -201,9 +166,12 @@ onRemoveStar,
 
       <section>
 
-        <div className="mb-5 flex items-center justify-between">
+        <div className="mb-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
 
-          <div className="flex items-center gap-3">
+         <div className="flex flex-wrap items-center gap-2
+justify-end
+w-full
+sm:w-auto">
 
             <h2 className="text-3xl font-semibold text-white">
               Files
@@ -215,7 +183,13 @@ onRemoveStar,
 
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex
+flex-wrap
+gap-2
+items-center
+justify-end
+w-full
+sm:w-auto">
 
             <select
               className="rounded-xl border border-white/10 bg-[#141821] px-4 py-2 text-sm text-zinc-300 outline-none"
@@ -255,7 +229,10 @@ onRemoveStar,
 
         </div>
 
+       <div className="overflow-x-auto rounded-2xl ">
+        
         <FileTable
+
           files={files}
           fileView={fileView}
           onDelete={onDelete}
@@ -265,6 +242,7 @@ onRemoveStar,
           onRemoveStar={onRemoveStar}
           onOpenFile={onOpenFile}
         />
+        </div>
 
       </section>
 

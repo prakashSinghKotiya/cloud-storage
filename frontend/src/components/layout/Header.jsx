@@ -18,8 +18,8 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-30 border-b border-white/10 bg-[#0c1017]/80 backdrop-blur-xl">
-      <div className="flex items-center gap-4 px-4 py-4 sm:px-6 lg:px-8">
-        <div className="flex items-center gap-3">
+     <div className="flex items-center justify-between gap-2 px-3 py-3 sm:px-6 lg:px-8">
+        <div className="flex min-w-0 flex-1 items-center gap-2">
           <button
             className="rounded-xl border border-white/10 bg-white/5 p-0 lg:hidden"
             onClick={() => setSidebarOpen(true) }
@@ -27,10 +27,10 @@ export default function Header() {
             <Menu size={18} />
           </button>
 
-<div className="flex flex-col pr-8 " >
+<div className="flex flex-col pr-2 sm:pr-8 " >
   {/* Logo + Title */}
   <div className="flex items-center gap-0 cursor-pointer" onClick={() => navigate("/app")} >
-    <div className="w-10 h-10 flex-shrink-0">
+    <div className="h-8 w-8 flex-shrink-0 sm:h-10 sm:w-10">
       <img
         src="/cloudlogo.svg"
         alt="ClouDisk"
@@ -38,15 +38,41 @@ export default function Header() {
       />
     </div>
 
-    <h1 className="text-1xl font-bold tracking-tight text-white pl-0">
-      ClouDisk
-    </h1>
+    <h1
+  className="
+    truncate
+    text-base
+    sm:text-lg
+    lg:text-xl
+    font-bold
+    tracking-tight
+    text-white
+  "
+>
+  ClouDisk
+</h1>
   </div>
 
  
 </div>
 
-            <div className="hidden w-[55%] min-w-[500px] max-w-[750px] items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 md:flex">
+            <div
+ className="
+hidden
+md:flex
+flex-1
+max-w-xl
+items-center
+gap-2
+rounded-2xl
+border
+border-white/10
+bg-white/5
+px-4
+py-3
+mx-4
+"
+>
             <Search size={18} className="text-zinc-400" />
              <input
                  type="text"
@@ -62,27 +88,28 @@ export default function Header() {
 
   <button
   onClick={() => setOpenAI(!openAI)}
-  className="
-    flex
-    items-center
-    gap-2
+   className="
+flex
+h-9
+w-9
+items-center
+justify-center
+rounded-xl
+border
+border-violet-500/20
+bg-violet-500/10
+text-violet-300
+transition-all
+hover:bg-violet-500/20
 
-    rounded-2xl
-    border border-violet-500/20
+sm:h-auto
+sm:w-auto
+sm:px-3
+sm:py-2
 
-    bg-violet-500/10
+lg:px-4
+lg:py-2.5
 
-    px-4
-    py-2.5
-
-    text-sm
-    font-medium
-
-    text-violet-300
-
-    transition-all
-
-    hover:bg-violet-500/20
   "
 >
   <Bot size={18} />

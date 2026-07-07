@@ -8,25 +8,43 @@ import {
 import { useContextMenu } from "../../context/ContextMenuContext";
 
 const SIZE_STYLES = {
-  small: {
-    card: "min-h-[140px] p-4 rounded-2xl",
-    iconWrap: "h-12 w-12 rounded-xl",
-    icon: 28,
-    title: "text-base",
-  },
+ small: {
+  card: "p-3 rounded-xl",
+  iconWrap: "h-9 w-9 rounded-lg",
+  icon: "w-5 h-5",
+  title: "text-sm",
+},
 
   medium: {
-    card: "min-h-[180px] p-6 rounded-3xl",
-    iconWrap: "h-16 w-16 rounded-2xl",
-    icon: 34,
-    title: "text-lg",
+    card: `
+      min-h-[150px]
+      sm:min-h-[180px]
+      p-4 sm:p-6
+      rounded-2xl sm:rounded-3xl
+    `,
+    iconWrap: `
+      h-12 w-12
+      sm:h-16 sm:w-16
+      rounded-xl sm:rounded-2xl
+    `,
+    icon: "w-7 h-7 sm:w-9 sm:h-9",
+    title: "text-base sm:text-lg",
   },
 
   large: {
-    card: "min-h-[220px] p-8 rounded-[30px]",
-    iconWrap: "h-20 w-20 rounded-3xl",
-    icon: 40,
-    title: "text-xl",
+    card: `
+      min-h-[170px]
+      sm:min-h-[220px]
+      p-5 sm:p-8
+      rounded-2xl sm:rounded-[30px]
+    `,
+    iconWrap: `
+      h-14 w-14
+      sm:h-20 sm:w-20
+      rounded-2xl sm:rounded-3xl
+    `,
+     icon: "w-8 h-8 sm:w-10 sm:h-10",
+    title: "text-lg sm:text-xl",
   },
 };
 
@@ -75,8 +93,7 @@ export default function FolderCard({
           <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-500/10">
 
             <Folder
-              size={24}
-              className="text-blue-400"
+              className={`${styles.icon} text-blue-400`}
             />
 
           </div>
@@ -187,7 +204,7 @@ export default function FolderCard({
 
       {/* Content */}
 
-      <div className="mt-6">
+      <div className={size === "small" ? "mt-3" : "mt-6"}>
 
         <h3
           className={`
@@ -201,7 +218,12 @@ export default function FolderCard({
           {folder.name}
         </h3>
 
-        <div className="mt-2 flex items-center gap-2 text-sm text-zinc-500">
+        <div
+  className={`
+flex items-center gap-2 text-zinc-500
+${size === "small" ? "mt-1 text-xs" : "mt-2 text-sm"}
+`}
+>
 
           <Folder size={14} />
 
@@ -215,20 +237,22 @@ export default function FolderCard({
 
       {/* Footer */}
 
-      <div className="mt-8 flex items-center justify-between">
+      <div
+  className={`flex items-center justify-between ${
+    size === "small" ? "mt-4" : "mt-8"
+  }`}
+>
 
         <span
-          className="
-          rounded-full
-          border
-          border-white/10
-          bg-white/5
-          px-3
-          py-1
-          text-xs
-          font-medium
-          text-zinc-400
-          "
+         className={`
+rounded-full
+border
+border-white/10
+bg-white/5
+${size === "small" ? "px-2 py-0.5 text-[10px]" : "px-3 py-1 text-xs"}
+font-medium
+text-zinc-400
+`}
         >
           Folder
         </span>

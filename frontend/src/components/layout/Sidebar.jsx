@@ -48,7 +48,7 @@ export default function Sidebar() {
       >
         {/* User */}
         <div className="mb-6 flex-shrink-0 rounded-2xl border border-white/10 bg-white/5 p-4">
-          <p className="text-xs text-zinc-400">Welcome to <spam className="bg-gradient-to-br from-indigo-500 to-purple-500 bg-clip-text text-transparent  text-bold"> ClouDisk</spam></p>
+          <p className="text-xs text-zinc-400">Welcome to <span className="bg-gradient-to-br from-indigo-500 to-purple-500 bg-clip-text text-transparent  text-bold"> ClouDisk</span></p>
 
           <h2 className="mt-1 truncate text-lg font-semibold text-white">
             {user?.name || user?.email || "User"}
