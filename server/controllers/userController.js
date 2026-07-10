@@ -128,7 +128,7 @@ export const loginUser = async(req, res, next)=>{
 
    
    
-   const allSessions = await redisDb.ft.search("userIdIdx", `@userId:${user._id}`, {RETURN:[]}) // BUT for using  SEARCHING WE NEED TO CREATE THE INDEX USING REDIS CLI IE UBUNTU 
+   const allSessions = await redisDb.ft.search("userIdIdx", `@userId:{${user._id}}`, {RETURN:[]}) // BUT for using  SEARCHING WE NEED TO CREATE THE INDEX USING REDIS CLI IE UBUNTU 
     if(allSessions.total >= 2){  
         await redisDb.del(allSessions.documents[0].id)
     }
