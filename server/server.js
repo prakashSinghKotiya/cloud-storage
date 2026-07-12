@@ -37,7 +37,7 @@ app.use(helmet({
   }));      // helmet js lib set mutipple authentication headers for secure app such as Content-Security-Policy and many more 
   
 //app.use(generalLimiter) //global rate limiter this is causing problem for oauth so 
-app.set("trust proxy", true);
+
 
 
 
