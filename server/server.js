@@ -22,6 +22,7 @@ const secretkey = process.env.SESSION_SECRET
 try {
 await connectdb()       // connecting mongooose here 
 const app = express()
+  app.set("trust proxy", 1);
 //app.use(requstThrottling)
 app.use(cookieParser(secretkey)) // this will be the secret key of our signed coookie 
 app.use(express.json()) // sending body data, It parses the incoming JSON string from the HTTP request body into a JavaScript object. 
