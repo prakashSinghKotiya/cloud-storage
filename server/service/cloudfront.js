@@ -5,7 +5,7 @@ import { getSignedUrl } from "@aws-sdk/cloudfront-signer"
 
 
 const distribution = process.env.CLOUDFRONT_DISTRIBUTION; // this will also get from cloudfront 
-const privateKey = process.env.CLOUDFRONT_PRIVATE_KEY.replace(/\\n/g, "\n"); // will create this using open ssl
+const privateKey = process.env.CLOUDFRONT_PRIVATE_KEY // will create this using open ssl
 const keyPairId = process.env.CLOUDFRONT_KEY_PAIR; // we will get this from cloudfront keypair id 
 const dateLessThan = new Date(Date.now() + 1000 * 60 * 60).toISOString(); // after this it will expire 
 
@@ -20,7 +20,7 @@ const signedUrl = getSignedUrl({
   dateLessThan,
   privateKey,
 });
-
+console.log(signedUrl)
 return signedUrl
 
 } // we are only using cloudfront for get so it will load faster  insted of getting directly using aws s3 signed url 
