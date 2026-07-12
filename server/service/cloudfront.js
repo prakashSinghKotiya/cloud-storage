@@ -7,7 +7,7 @@ import { getSignedUrl } from "@aws-sdk/cloudfront-signer"
 const distribution = process.env.CLOUDFRONT_DISTRIBUTION; // this will also get from cloudfront 
 const privateKey = process.env.CLOUDFRONT_PRIVATE_KEY // will create this using open ssl
 const keyPairId = process.env.CLOUDFRONT_KEY_PAIR; // we will get this from cloudfront keypair id 
-const dateLessThan = new Date(Date.now() + 1000 * 60 * 60).toISOString(); // after this it will expire 
+const dateLessThan = new Date(Date.now() + 1000 * 60 * 60 * 24 * 7).toISOString(); // after this it will expire 
 
 
 export const cloudfrontSignedUrl = ({key, download = false , filename})=>{ // types of controller for get files using cf
